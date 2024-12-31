@@ -19,6 +19,8 @@ button {
   --o-color: hsl(237, 88%, 52%);
   --hover-scale: 1.1;
   --transition-duration: 200ms;
+  --btn-bg: hsl(240, 1%, 68%);
+  --btn-color: hsl(224, 39%, 4%);
 }
 
 body {
@@ -31,6 +33,7 @@ body {
   height: 100vh;
   font-size: 10px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: relative;
 }
 
 .game-board {
@@ -75,6 +78,7 @@ body {
   text-align: center;
   font-size: 1.5rem;
   margin-bottom: 10px;
+  z-index: 2;
 }
 
 .board-footer {
@@ -104,13 +108,13 @@ body {
 
 .score-x,
 .score-o {
-  color: var(--o-color);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 .score-x {
   color: var(--x-color);
 }
 .score-o {
+  color: var(--o-color);
 }
 
 .btn {
@@ -119,9 +123,10 @@ body {
   align-items: center;
   font-size: 1rem;
   width: 100px;
+  height: 30px;
   padding: 10px;
-  background-color: var(--box-bg);
-  color: var(--text-color);
+  background-color: var(--btn-bg);
+  color: var(--btn-color);
   border-radius: 5px;
   cursor: pointer;
   transition: background-color var(--transition-duration) ease-in-out;
@@ -132,11 +137,32 @@ body {
   display: flex;
   gap: 20px;
   justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.hide {
+  display: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 
 .btn.new-game-btn:hover {
   background-color: var(--x-color);
+  color: var(--text-color);
 }
 .btn.reset-all-btn:hover {
   background-color: var(--o-color);
+  color: var(--text-color);
 }

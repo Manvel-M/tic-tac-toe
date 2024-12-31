@@ -18,11 +18,12 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       <div class='player-score'>
         <p class='score-o'>0</p>
       </div>
-      <div class='buttons-container '>
-        <button class='btn new-game-btn'>New Game</button>
-        <button class='btn reset-all-btn'>Reset All</button>
-      </div>
     </div>
+    <div class='buttons-container'>
+      <button class='btn new-game-btn'>New Game</button>
+      <button class='btn reset-all-btn'>Reset All</button>
+    </div>
+    <div class='overlay'></div>
   </div>
 `;
 

@@ -3,6 +3,10 @@ export function ticTacToe() {
   const boxes = document.querySelectorAll(".box") as NodeListOf<HTMLDivElement>;
   const scoreX = document.querySelector(".score-x") as HTMLParagraphElement;
   const scoreO = document.querySelector(".score-o") as HTMLParagraphElement;
+  const overlay = document.querySelector(".overlay") as HTMLDivElement;
+  const btnsContainer = document.querySelector(
+    ".buttons-container"
+  ) as HTMLDivElement;
   const newGameButton = document.querySelector(
     ".new-game-btn"
   ) as HTMLButtonElement;
@@ -27,6 +31,8 @@ export function ticTacToe() {
 
   function newGame() {
     playerTurn = Math.floor(Math.random() * 2) === 0 ? "X" : "O";
+    overlay.classList.add("hide");
+    btnsContainer.classList.add("hide");
     clearBoard();
     announceBoard();
   }
@@ -65,10 +71,17 @@ export function ticTacToe() {
     if (winner) return;
     if (!playerMoves.includes("")) {
       winner = "Draw";
+      removeClasses();
       announceBoard();
       return;
     }
     playerTurn = playerTurn === "X" ? "O" : "X";
+    announceBoard();
+  }
+
+  function removeClasses() {
+    overlay.classList.remove("hide");
+    btnsContainer.classList.remove("hide");
   }
 
   function checkWinner() {
@@ -87,6 +100,7 @@ export function ticTacToe() {
           gameScores.o++;
           scoreO.innerHTML = gameScores.o.toString();
         }
+        removeClasses();
         announceBoard();
         return;
       }
