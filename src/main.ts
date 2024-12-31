@@ -1,5 +1,6 @@
 import "./style.css";
-import "./tic-tac-toe";
+import { ticTacToe } from "./tic-tac-toe";
+
 const boxes = Array(9)
   .fill(null)
   .map((_) => `<div class='box'></div>`);
@@ -12,12 +13,10 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <div class='board-footer'>
       <h2 class='score-title'>SCORE</h2>
       <div class='player-score'>
-        <p>X</p>
-        <p class='score-x'></p>
+        <p class='score-x'>0</p>
       </div>
       <div class='player-score'>
-        <p>O</p>
-        <p class='score-o'></p>
+        <p class='score-o'>0</p>
       </div>
       <div class='buttons-container '>
         <button class='btn new-game-btn'>New Game</button>
@@ -26,3 +25,5 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     </div>
   </div>
 `;
+
+ticTacToe();
